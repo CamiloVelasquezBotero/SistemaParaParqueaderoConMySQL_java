@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.text.ParseException;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class Controlador {
 
@@ -55,7 +56,25 @@ public class Controlador {
             return false;
         }
     }
-
+    
+    public boolean eliminarVehiculo(Vehiculo vehiculo){
+        Conexion con = new Conexion();
+        PreparedStatement ps = null;
+        
+        try{
+            Connection conexion = con.getConnection();
+            
+            ps = conexion.prepareStatement("delete from registrovehiculos where placa = ?");
+            ps.setString(1, vehiculo.getPlaca());
+            ps.executeUpdate();
+            
+            return true;
+        }catch(Exception ex){
+            System.err.println("Error, " + ex);
+            return false;
+        }
+    }
+    
     public int verificarPlaca(Vehiculo vehiculo) {
         Conexion con = new Conexion();
         PreparedStatement ps = null;
@@ -180,5 +199,38 @@ public class Controlador {
             System.err.println("Error, " + ex);
             return "no";
         }
+    }
+    
+    public DefaultTableModel obtenerRegistros(){
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("Placa");
+        modelo.addColumn("Nombre Propietario");
+        modelo.addColumn("Tipo");
+        modelo.addColumn("Entrada");
+        modelo.addColumn("Salida");
+        modelo.addColumn("Pagado");
+        modelo.addColumn("Estado");
+        
+        Conexion con = new Conexion();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        
+        try{
+            Connection conexion = con.getConnection();
+            
+            ps = conexion.prepareStatement("select placa, nombrePropietario, tipoDeVehiculo, horaEntrada, horaSalida, valorPagado, estado from registrovehiculos");
+            rs = ps.executeQuery();
+            while(rs.next()){
+                Object[] fila = new Object[7];
+                for(int i=0; i<7; i++){
+                    fila[i] = rs.getObject(i+1);
+                }
+                modelo.addRow(fila);
+            }
+        }catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "Error al cargar la base de datos");
+            System.err.println("Error," + ex);
+        }
+        return modelo;
     }
 }

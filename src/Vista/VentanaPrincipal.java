@@ -1,5 +1,5 @@
 package Vista;
-
+import Vista.Registros;
 import Modelo.Conexion;
 import Modelo.Controlador;
 import Modelo.Vehiculo;
@@ -12,9 +12,10 @@ import java.sql.PreparedStatement;
 import javax.swing.ButtonGroup;
 
 public class VentanaPrincipal extends javax.swing.JFrame {
-
+    
     Controlador controlador = new Controlador();
     Vehiculo vehiculo = new Vehiculo();
+    Registros registros = new Registros(this, true);
 
     public VentanaPrincipal() {
         initComponents();
@@ -73,7 +74,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         grupoBotones = new javax.swing.ButtonGroup();
         etiquetaTitulo = new javax.swing.JLabel();
@@ -81,7 +81,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         cajaPlaca = new javax.swing.JTextField();
         botonEstado = new javax.swing.JButton();
         botonRegistrar = new javax.swing.JButton();
-        botonBuscar = new javax.swing.JButton();
         botonRegistros = new javax.swing.JButton();
         botonRetirar = new javax.swing.JButton();
         etiquetaImagen = new javax.swing.JLabel();
@@ -134,11 +133,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        botonBuscar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
-        botonBuscar.setText("Buscar");
-
         botonRegistros.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         botonRegistros.setText("Registros");
+        botonRegistros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonRegistrosActionPerformed(evt);
+            }
+        });
 
         botonRetirar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         botonRetirar.setText("Retirar");
@@ -215,28 +216,27 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(etiquetaLibres, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(etiquetaNumeroLibres, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(etiquetaNumeroEnUso, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(etiquetaEnUso, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(etiquetaImagen))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(botonRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(botonRetirar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(botonRegistros)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(botonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(etiquetaLibres, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(etiquetaNumeroLibres, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(etiquetaNumeroEnUso, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(etiquetaEnUso, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addComponent(etiquetaImagen))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(botonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(botonRetirar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(155, 155, 155)
+                        .addComponent(botonRegistros)))
                 .addGap(2, 2, 2)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -266,7 +266,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 .addComponent(rbAutomovil)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(botonEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(146, 146, 146))))
         );
@@ -308,9 +307,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addComponent(botonRetirar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(botonRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(53, 53, 53))
         );
 
@@ -402,6 +399,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     if (controlador.verificarPlaca(vehiculo) == 1) {
                         if (controlador.retirar(vehiculo)) {
                             if (controlador.valorCobrar(vehiculo)) {
+                                controlador.eliminarVehiculo(vehiculo);
                                 actualizarDisponibilidad();
                                 limpiar();
                             } else {
@@ -419,6 +417,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 break;
         }
     }//GEN-LAST:event_botonEstadoActionPerformed
+
+    private void botonRegistrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrosActionPerformed
+        registros.ActualizarModeloTabla();
+        registros.setVisible(true);
+    }//GEN-LAST:event_botonRegistrosActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -454,7 +457,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar barraMenu;
-    private javax.swing.JButton botonBuscar;
     private javax.swing.JButton botonEstado;
     private javax.swing.JButton botonRegistrar;
     private javax.swing.JButton botonRegistros;
