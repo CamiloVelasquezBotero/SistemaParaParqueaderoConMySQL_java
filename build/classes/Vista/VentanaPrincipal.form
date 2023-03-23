@@ -5,61 +5,6 @@
     <Component class="javax.swing.ButtonGroup" name="grupoBotones">
     </Component>
     <Menu class="javax.swing.JMenuBar" name="barraMenu">
-      <SubComponents>
-        <Menu class="javax.swing.JMenu" name="menuConfiguraciones">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Configuraciones"/>
-          </Properties>
-          <SubComponents>
-            <Menu class="javax.swing.JMenu" name="submenuVisual">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Visual"/>
-              </Properties>
-              <SubComponents>
-                <Menu class="javax.swing.JMenu" name="submenuColorFondo">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Color de fondo"/>
-                  </Properties>
-                  <SubComponents>
-                    <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Por defecto (Gris)"/>
-                      </Properties>
-                    </MenuItem>
-                    <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Blanco"/>
-                      </Properties>
-                    </MenuItem>
-                    <MenuItem class="javax.swing.JMenuItem" name="jMenuItem6">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Negro"/>
-                      </Properties>
-                    </MenuItem>
-                  </SubComponents>
-                </Menu>
-                <Menu class="javax.swing.JMenu" name="submenuCambiarTama&#xf1;oLetra">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Cambiar Tama&#xf1;o Letra"/>
-                  </Properties>
-                  <SubComponents>
-                    <MenuItem class="javax.swing.JMenuItem" name="submenuMasGrande">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Mas grande +"/>
-                      </Properties>
-                    </MenuItem>
-                    <MenuItem class="javax.swing.JMenuItem" name="submenuMasPeque&#xf1;a">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Mas peque&#xf1;a -"/>
-                      </Properties>
-                    </MenuItem>
-                  </SubComponents>
-                </Menu>
-              </SubComponents>
-            </Menu>
-          </SubComponents>
-        </Menu>
-      </SubComponents>
     </Menu>
   </NonVisualComponents>
   <Properties>
@@ -181,7 +126,7 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               <Component id="etiquetaTitulo" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="35" max="32767" attributes="0"/>
+              <EmptySpace pref="54" max="32767" attributes="0"/>
               <Component id="etiquetaPlaca" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="cajaPlaca" min="-2" max="-2" attributes="0"/>
@@ -241,6 +186,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="botonEstado">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="99" green="99" red="0" type="rgb"/>
+        </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial Rounded MT Bold" size="18" style="0"/>
         </Property>
@@ -252,6 +200,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="botonRegistrar">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="99" green="99" red="0" type="rgb"/>
+        </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial Rounded MT Bold" size="18" style="0"/>
         </Property>
@@ -263,6 +214,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="botonRegistros">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="99" green="99" red="0" type="rgb"/>
+        </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial Rounded MT Bold" size="18" style="0"/>
         </Property>
@@ -274,6 +228,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="botonRetirar">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="99" green="99" red="0" type="rgb"/>
+        </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial Rounded MT Bold" size="18" style="0"/>
         </Property>

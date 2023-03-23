@@ -27,6 +27,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         rbAutomovil.setEnabled(false);
         cajaPlaca.setEnabled(false);
         cajaNombrePropietario.setEnabled(false);
+        actualizarDisponibilidad();
     }
 
     private void limpiar() {
@@ -93,15 +94,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         rbMotocicleta = new javax.swing.JRadioButton();
         rbAutomovil = new javax.swing.JRadioButton();
         barraMenu = new javax.swing.JMenuBar();
-        menuConfiguraciones = new javax.swing.JMenu();
-        submenuVisual = new javax.swing.JMenu();
-        submenuColorFondo = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        submenuCambiarTamañoLetra = new javax.swing.JMenu();
-        submenuMasGrande = new javax.swing.JMenuItem();
-        submenuMasPequeña = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Parqueadero");
@@ -117,6 +109,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         cajaPlaca.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         cajaPlaca.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
+        botonEstado.setBackground(new java.awt.Color(0, 153, 153));
         botonEstado.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         botonEstado.setText("...");
         botonEstado.addActionListener(new java.awt.event.ActionListener() {
@@ -125,6 +118,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        botonRegistrar.setBackground(new java.awt.Color(0, 153, 153));
         botonRegistrar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         botonRegistrar.setText("Registrar");
         botonRegistrar.addActionListener(new java.awt.event.ActionListener() {
@@ -133,6 +127,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        botonRegistros.setBackground(new java.awt.Color(0, 153, 153));
         botonRegistros.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         botonRegistros.setText("Registros");
         botonRegistros.addActionListener(new java.awt.event.ActionListener() {
@@ -141,6 +136,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        botonRetirar.setBackground(new java.awt.Color(0, 153, 153));
         botonRetirar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         botonRetirar.setText("Retirar");
         botonRetirar.addActionListener(new java.awt.event.ActionListener() {
@@ -177,38 +173,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         rbAutomovil.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         rbAutomovil.setText("Automovil");
-
-        menuConfiguraciones.setText("Configuraciones");
-
-        submenuVisual.setText("Visual");
-
-        submenuColorFondo.setText("Color de fondo");
-
-        jMenuItem4.setText("Por defecto (Gris)");
-        submenuColorFondo.add(jMenuItem4);
-
-        jMenuItem5.setText("Blanco");
-        submenuColorFondo.add(jMenuItem5);
-
-        jMenuItem6.setText("Negro");
-        submenuColorFondo.add(jMenuItem6);
-
-        submenuVisual.add(submenuColorFondo);
-
-        submenuCambiarTamañoLetra.setText("Cambiar Tamaño Letra");
-
-        submenuMasGrande.setText("Mas grande +");
-        submenuCambiarTamañoLetra.add(submenuMasGrande);
-
-        submenuMasPequeña.setText("Mas pequeña -");
-        submenuCambiarTamañoLetra.add(submenuMasPequeña);
-
-        submenuVisual.add(submenuCambiarTamañoLetra);
-
-        menuConfiguraciones.add(submenuVisual);
-
-        barraMenu.add(menuConfiguraciones);
-
         setJMenuBar(barraMenu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -284,7 +248,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(etiquetaTitulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addComponent(etiquetaPlaca)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cajaPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -472,16 +436,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel etiquetaPlaca;
     private javax.swing.JLabel etiquetaTitulo;
     private javax.swing.ButtonGroup grupoBotones;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenu menuConfiguraciones;
     private javax.swing.JRadioButton rbAutomovil;
     private javax.swing.JRadioButton rbMotocicleta;
-    private javax.swing.JMenu submenuCambiarTamañoLetra;
-    private javax.swing.JMenu submenuColorFondo;
-    private javax.swing.JMenuItem submenuMasGrande;
-    private javax.swing.JMenuItem submenuMasPequeña;
-    private javax.swing.JMenu submenuVisual;
     // End of variables declaration//GEN-END:variables
 }

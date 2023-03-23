@@ -233,4 +233,24 @@ public class Controlador {
         }
         return modelo;
     }
+    
+    public boolean ActualizarRegistros(Vehiculo vehiculo, String placaActual){
+        Conexion con = new Conexion();
+        PreparedStatement ps = null;
+        
+        try{
+            Connection conexion = con.getConnection();
+            
+            ps = conexion.prepareStatement("update registrovehiculos set nombrePropietario=?,tipoDeVehiculo=? where placa=?");
+            ps.setString(1, vehiculo.getNombrePropietario());
+            ps.setString(2, vehiculo.getTipoDeVehiculo());
+            ps.setString(3, placaActual);
+            ps.executeUpdate();
+            
+            return true;
+        }catch(Exception ex){
+            System.err.println("Error, " + ex);
+            return false;
+        }
+    }
 }

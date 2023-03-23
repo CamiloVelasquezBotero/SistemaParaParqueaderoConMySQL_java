@@ -1,10 +1,12 @@
 package Vista;
 
 import Modelo.Controlador;
-
+import Modelo.Vehiculo;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class Registros extends javax.swing.JDialog {
+    Vehiculo vehiculo = new Vehiculo();
     Controlador controlador = new Controlador();
     DefaultTableModel modeloTabla = controlador.obtenerRegistros();
 
@@ -26,17 +28,17 @@ public class Registros extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
         botonVolver = new javax.swing.JButton();
-        botonActualizarVH = new javax.swing.JButton();
         botonEliminarVH = new javax.swing.JButton();
         botonActualizarTabla2 = new javax.swing.JButton();
-        barraMenu = new javax.swing.JMenuBar();
-        menuConfiguraciones = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        tabla.setBackground(new java.awt.Color(0, 51, 51));
+        tabla.setForeground(new java.awt.Color(255, 255, 255));
         tabla.setModel(modeloTabla);
         jScrollPane1.setViewportView(tabla);
 
+        botonVolver.setBackground(new java.awt.Color(0, 153, 153));
         botonVolver.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         botonVolver.setText("Volver");
         botonVolver.addActionListener(new java.awt.event.ActionListener() {
@@ -45,24 +47,18 @@ public class Registros extends javax.swing.JDialog {
             }
         });
 
-        botonActualizarVH.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
-        botonActualizarVH.setText("Actualizar VH");
-        botonActualizarVH.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonActualizarVHActionPerformed(evt);
-            }
-        });
-
+        botonEliminarVH.setBackground(new java.awt.Color(0, 153, 153));
         botonEliminarVH.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
-        botonEliminarVH.setText("Eliminar VH");
+        botonEliminarVH.setText("Eliminar Vehiculo");
         botonEliminarVH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonEliminarVHActionPerformed(evt);
             }
         });
 
+        botonActualizarTabla2.setBackground(new java.awt.Color(0, 153, 153));
         botonActualizarTabla2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
-        botonActualizarTabla2.setText("Actualizar Tabla");
+        botonActualizarTabla2.setText("Modificar nombre/tipo");
         botonActualizarTabla2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonActualizarTabla2ActionPerformed(evt);
@@ -78,34 +74,27 @@ public class Registros extends javax.swing.JDialog {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 758, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(botonActualizarTabla2, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(botonActualizarTabla2)
                 .addGap(18, 18, 18)
-                .addComponent(botonActualizarVH, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(botonEliminarVH, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(botonEliminarVH)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(botonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44))
+                .addGap(29, 29, 29))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(botonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonActualizarTabla2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonEliminarVH, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonActualizarVH, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(botonActualizarTabla2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botonEliminarVH, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(17, 17, 17))
         );
-
-        menuConfiguraciones.setText("Configuraciones");
-        barraMenu.add(menuConfiguraciones);
-
-        setJMenuBar(barraMenu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -125,16 +114,37 @@ public class Registros extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_botonVolverActionPerformed
 
-    private void botonActualizarVHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonActualizarVHActionPerformed
-        
-    }//GEN-LAST:event_botonActualizarVHActionPerformed
-
     private void botonEliminarVHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarVHActionPerformed
-        // TODO add your handling code here:
+        int filaSeleccionada = tabla.getSelectedRow();
+        int columnaPlaca = 0;
+        
+        Object placa = tabla.getValueAt(filaSeleccionada, columnaPlaca);
+        vehiculo.setPlaca((String)placa);
+        
+        if(controlador.eliminarVehiculo(vehiculo)){
+            JOptionPane.showMessageDialog(null, "Vehiculo eliminado correctamente");
+        }else{
+            JOptionPane.showMessageDialog(null, "Error al eliminar el Vehiculo.");
+        }
+        
+        ActualizarModeloTabla();
     }//GEN-LAST:event_botonEliminarVHActionPerformed
 
     private void botonActualizarTabla2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonActualizarTabla2ActionPerformed
-        tabla.setModel(controlador.obtenerRegistros());
+        int filaSeleccionada = tabla.getSelectedRow();
+        int columnaSeleccionada = tabla.getSelectedColumn();
+        String placa = (String)tabla.getValueAt(filaSeleccionada, 0);
+        
+        vehiculo.setNombrePropietario((String)tabla.getValueAt(filaSeleccionada, 1));
+        vehiculo.setTipoDeVehiculo((String)tabla.getValueAt(filaSeleccionada, 2));
+    
+        if(controlador.ActualizarRegistros(vehiculo, placa)){
+            JOptionPane.showMessageDialog(null, "Registro Modificado correctamente");
+        }else{
+            JOptionPane.showMessageDialog(null, "Error al modificar el registro");
+        }
+        
+        ActualizarModeloTabla();
     }//GEN-LAST:event_botonActualizarTabla2ActionPerformed
 
     public static void main(String args[]) {
@@ -189,14 +199,11 @@ public void windowClosing(java.awt.event.WindowEvent e) {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuBar barraMenu;
     private javax.swing.JButton botonActualizarTabla2;
-    private javax.swing.JButton botonActualizarVH;
     private javax.swing.JButton botonEliminarVH;
     private javax.swing.JButton botonVolver;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JMenu menuConfiguraciones;
     private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
 }
